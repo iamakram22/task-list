@@ -5,9 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Simple Task list app</title>
+    @yield('styles')
 </head>
 <body>
     <h1>@yield('heading')</h1>
+
+    @if (session()->has('sucess'))
+        <div>{{ session('sucess') }}</div>
+    @endif
+
     <div class="container">
         @yield('content')
     </div>
