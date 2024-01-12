@@ -9,8 +9,17 @@
     @endif
     <p>{{ $task->created_at }}</p>
     <p>{{ $task->updated_at }}</p>
+    <p>{{ $task->completed ? 'Completed' : 'Not Completed' }}</p>
 
     <a href="{{ route('tasks.edit', ['task' => $task->id]) }}">Edit</a>
+
+    <div>
+        <form action="{{route('tasks.complete', ['task' => $task])}}" method="post">
+            @csrf
+            @method('put')
+            <button type="submit">Mark as {{ $task->completed ? 'not' : '' }} completed</button>
+        </form>
+    </div>
 
     <div>
         <form action="{{route('tasks.destroy', ['task' => $task->id])}}" method="post">
